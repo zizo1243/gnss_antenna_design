@@ -32,15 +32,17 @@ The following values are read from the supplied CST plots. They describe **simul
 
 | Metric | Result | Interpretation |
 |---|---:|---|
-| VSWR at 1.575 GHz | 1.3575 | Good impedance match at GPS L1 |
+| Target frequency | 1.575 GHz | GPS L1 |
+| VSWR at 1.575 GHz | 1.3575 | Good impedance match |
+| Approx. S11 at 1.575 GHz | -16.4 dB | Derived from the VSWR marker; consistent with the plotted trace |
+| Minimum plotted S11 | Approximately -19 dB near 1.555 GHz | Approximate visual reading of the S11 trace |
 | Axial-ratio 3 dB lower edge | 1.5702 GHz | From the plotted 3 dB crossing |
 | Axial-ratio 3 dB upper edge | 1.5902 GHz | From the plotted 3 dB crossing |
 | 3 dB axial-ratio bandwidth | 20 MHz | The 1.575 GHz target is inside this interval |
-| Minimum plotted S11 | Approximately -19 dB near 1.555 GHz | Approximate visual reading of the S11 trace |
 
 ### Important frequency observation
 
-The deepest S11 notch in the supplied plot appears near **1.555 GHz**, slightly below the GPS L1 target of 1.575 GHz. However, the VSWR marker at 1.575 GHz is approximately **1.3575**, and the plotted axial-ratio bandwidth below 3 dB includes 1.575 GHz. Further fine-tuning could bring the deepest impedance resonance closer to the exact L1 center frequency while preserving the circular-polarization bandwidth.
+The deepest S11 notch in the supplied plot appears near **1.555 GHz**, slightly below the GPS L1 target of 1.575 GHz. At the GPS L1 frequency, the VSWR marker is approximately **1.3575**, corresponding to a return loss of about **16.4 dB**. The plotted axial ratio remains below 3 dB from **1.5702 GHz to 1.5902 GHz**, so 1.575 GHz is within the simulated circular-polarization bandwidth. Further fine-tuning could move the deepest impedance resonance closer to the exact L1 center frequency while preserving the axial-ratio bandwidth.
 
 ## Far-Field Evaluation
 
@@ -69,7 +71,7 @@ The screenshots show the radiation-pattern shape, but the peak directivity/gain 
 
 ## Reproducibility and Scope
 
-Open the `.cst` project in CST Studio Suite to inspect the model and simulation setup. The reported values above are transcribed from the supplied result plots; they should be treated as simulation results unless independently confirmed by prototype measurements.
+Open the `.cst` project in CST Studio Suite to inspect the model and simulation setup. The reported values above are transcribed from the supplied result plots; the S11 value at the target frequency is estimated from the displayed VSWR marker. All reported values should be treated as simulation results unless independently confirmed by prototype measurements.
 
 ---
 
