@@ -1,28 +1,29 @@
 # GNSS L1 RHCP Microstrip Patch Antenna
 
-CST Microwave Studio project for the electromagnetic design and simulation of a right-hand circularly polarized (RHCP) microstrip patch antenna targeting the GPS/GNSS L1 band.
-
-## Antenna Model
-
-![CST antenna geometry](assets/antenna-model.png)
-
-The simulated antenna geometry is shown above. The dimensioned design used in the model is summarized below.
-
-![Antenna dimensions](assets/antenna-dimensions.png)
+Electromagnetic design and CST Microwave Studio simulation of a corner-truncated right-hand circularly polarized (RHCP) microstrip patch antenna targeting GPS/GNSS L1.
 
 ## Project Overview
 
-- **Target band:** GPS L1
-- **Target frequency:** 1.575 GHz
-- **Antenna type:** Corner-truncated microstrip patch
-- **Polarization objective:** RHCP
-- **Simulation tool:** CST Microwave Studio
+| Item | Description |
+|---|---|
+| Application | GPS / GNSS L1 |
+| Target frequency | 1.575 GHz |
+| Antenna | Corner-truncated microstrip patch |
+| Polarization objective | RHCP |
+| Simulation tool | CST Microwave Studio |
+| Substrate | FR-4 (as documented in the project work) |
 
-The design uses corner truncation to excite two orthogonal patch modes with the phase relationship required for circular polarization. The project covers geometry definition, feed configuration, impedance matching, and far-field evaluation.
+The corner truncations are used to excite two orthogonal patch modes with a relative phase suitable for circular polarization. The work includes geometry definition, feed configuration, impedance matching, axial-ratio evaluation, and far-field analysis.
 
-## Antenna Geometry
+## Antenna Model and Geometry
 
-The dimensions below are taken from the design table supplied with the CST results.
+### CST model
+
+![CST antenna geometry](assets/antenna-model.png)
+
+### Design dimensions
+
+![Antenna dimensions](assets/antenna-dimensions.png)
 
 | Parameter | Description | Value |
 |---|---|---:|
@@ -36,57 +37,48 @@ The dimensions below are taken from the design table supplied with the CST resul
 
 ## CST Simulation Results
 
-### Input Matching
+All results below are **simulated**, not measured on a fabricated prototype.
+
+### Input matching
 
 ![Simulated S11 magnitude versus frequency](assets/s11-vs-frequency.png)
 
-The deepest plotted S11 notch is approximately -19 dB near 1.555 GHz. At the GPS L1 target of 1.575 GHz, the VSWR marker gives approximately 1.3575, corresponding to an estimated S11 of about -16.4 dB.
-
 ![Simulated VSWR versus frequency](assets/vswr-vs-frequency.png)
 
-### Circular Polarization
+At the GPS L1 target frequency of 1.575 GHz, the plotted VSWR marker is approximately **1.3575**, corresponding to an estimated S11 of about **-16.4 dB**. The deepest S11 notch in the supplied sweep is approximately **-19 dB near 1.555 GHz**.
+
+This indicates that the deepest impedance resonance is slightly below the 1.575 GHz target. Further tuning could move the minimum closer to the L1 center frequency while maintaining the circular-polarization performance.
+
+### Circular polarization
 
 ![Axial ratio versus frequency](assets/axial-ratio-bandwidth.png)
 
-The plotted 3 dB axial-ratio crossings are approximately 1.5702 GHz and 1.5902 GHz, giving a 20 MHz axial-ratio bandwidth. The GPS L1 target frequency of 1.575 GHz lies within this interval.
+The plotted 3 dB axial-ratio crossings are approximately **1.5702 GHz** and **1.5902 GHz**, giving a simulated **20 MHz axial-ratio bandwidth**. The GPS L1 target frequency of 1.575 GHz lies inside this interval.
 
-### Far-Field Pattern
+### Far-field pattern
 
 ![3D far-field pattern](assets/far-field-3d.png)
 
 ![Far-field directivity cut at phi equals zero degrees](assets/far-field-directivity-phi0.png)
 
-The plots are included to show the simulated radiation-pattern shape. No peak gain or directivity value is claimed because the supplied screenshots do not provide a clearly readable peak marker.
+The supplied plots show the 3D far-field visualization and a 2D directivity cut at $\phi = 0^\circ$. A numerical peak gain/directivity value is not stated because a clearly readable peak marker is not available in the supplied screenshots.
 
+## Summary of Extracted Results
 
-The following values are read from the supplied CST plots. They describe **simulation results**, not measurements from a fabricated antenna.
-
-| Metric | Result | Interpretation |
-|---|---:|---|
-| Target frequency | 1.575 GHz | GPS L1 |
-| VSWR at 1.575 GHz | 1.3575 | Good impedance match |
-| Approx. S11 at 1.575 GHz | -16.4 dB | Derived from the VSWR marker; consistent with the plotted trace |
-| Minimum plotted S11 | Approximately -19 dB near 1.555 GHz | Approximate visual reading of the S11 trace |
-| Axial-ratio 3 dB lower edge | 1.5702 GHz | From the plotted 3 dB crossing |
-| Axial-ratio 3 dB upper edge | 1.5902 GHz | From the plotted 3 dB crossing |
-| 3 dB axial-ratio bandwidth | 20 MHz | The 1.575 GHz target is inside this interval |
-
-### Important frequency observation
-
-The deepest S11 notch in the supplied plot appears near **1.555 GHz**, slightly below the GPS L1 target of 1.575 GHz. At the GPS L1 frequency, the VSWR marker is approximately **1.3575**, corresponding to a return loss of about **16.4 dB**. The plotted axial ratio remains below 3 dB from **1.5702 GHz to 1.5902 GHz**, so 1.575 GHz is within the simulated circular-polarization bandwidth. Further fine-tuning could move the deepest impedance resonance closer to the exact L1 center frequency while preserving the axial-ratio bandwidth.
-
-## Far-Field Evaluation
-
-The supplied CST results include:
-- A 3D far-field radiation/directivity visualization.
-- A two-dimensional far-field directivity cut at $\phi = 0^\circ$.
-
-The screenshots show the radiation-pattern shape, but the peak directivity/gain value is not sufficiently identified in the supplied plots, so no numerical gain claim is made here.
+| Metric | Result |
+|---|---:|
+| Target frequency | 1.575 GHz |
+| VSWR at 1.575 GHz | 1.3575 |
+| Estimated S11 at 1.575 GHz | -16.4 dB |
+| Minimum plotted S11 | Approximately -19 dB near 1.555 GHz |
+| Axial-ratio 3 dB band | 1.5702–1.5902 GHz |
+| Axial-ratio bandwidth | 20 MHz |
 
 ## Project Files
 
 - `antennadesign.cst` — CST Microwave Studio antenna model.
 - [Lab report (PDF)](Lab_report%20(1).pdf) — project report and supporting documentation.
+- `assets/` — CST model screenshots, dimensions, matching, axial-ratio, and far-field plots.
 
 ## Tools and Engineering Topics
 
@@ -100,9 +92,9 @@ The screenshots show the radiation-pattern shape, but the peak directivity/gain 
 - Axial-ratio bandwidth
 - Far-field radiation-pattern analysis
 
-## Reproducibility and Scope
+## Scope and Reproducibility
 
-Open the `.cst` project in CST Studio Suite to inspect the model and simulation setup. The reported values above are transcribed from the supplied result plots; the S11 value at the target frequency is estimated from the displayed VSWR marker. All reported values should be treated as simulation results unless independently confirmed by prototype measurements.
+Open the `.cst` project in CST Studio Suite to inspect the model and simulation setup. Values extracted from plots are approximate where noted. The S11 value at 1.575 GHz is estimated from the displayed VSWR marker. All numerical results represent simulation performance unless independently confirmed by prototype measurements.
 
 ---
 
