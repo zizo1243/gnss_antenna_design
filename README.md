@@ -2,6 +2,14 @@
 
 CST Microwave Studio project for the electromagnetic design and simulation of a right-hand circularly polarized (RHCP) microstrip patch antenna targeting the GPS/GNSS L1 band.
 
+## Antenna Model
+
+![CST antenna geometry](assets/antenna-model.png)
+
+The simulated antenna geometry is shown above. The dimensioned design used in the model is summarized below.
+
+![Antenna dimensions](assets/antenna-dimensions.png)
+
 ## Project Overview
 
 - **Target band:** GPS L1
@@ -27,6 +35,29 @@ The dimensions below are taken from the design table supplied with the CST resul
 | $W_g$ | Ground-plane width | 100 mm |
 
 ## CST Simulation Results
+
+### Input Matching
+
+![Simulated S11 magnitude versus frequency](assets/s11-vs-frequency.png)
+
+The deepest plotted S11 notch is approximately -19 dB near 1.555 GHz. At the GPS L1 target of 1.575 GHz, the VSWR marker gives approximately 1.3575, corresponding to an estimated S11 of about -16.4 dB.
+
+![Simulated VSWR versus frequency](assets/vswr-vs-frequency.png)
+
+### Circular Polarization
+
+![Axial ratio versus frequency](assets/axial-ratio-bandwidth.png)
+
+The plotted 3 dB axial-ratio crossings are approximately 1.5702 GHz and 1.5902 GHz, giving a 20 MHz axial-ratio bandwidth. The GPS L1 target frequency of 1.575 GHz lies within this interval.
+
+### Far-Field Pattern
+
+![3D far-field pattern](assets/far-field-3d.png)
+
+![Far-field directivity cut at phi equals zero degrees](assets/far-field-directivity-phi0.png)
+
+The plots are included to show the simulated radiation-pattern shape. No peak gain or directivity value is claimed because the supplied screenshots do not provide a clearly readable peak marker.
+
 
 The following values are read from the supplied CST plots. They describe **simulation results**, not measurements from a fabricated antenna.
 
